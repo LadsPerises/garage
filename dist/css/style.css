@@ -1318,11 +1318,12 @@ nav#main-nav.open {
 }
 
 .application-info h3 {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-size: clamp(1.55rem, 2.2vw, 2.05rem);
   margin: 0 0 0.65rem;
   color: #ffffff;
   letter-spacing: -0.02em;
-  line-height: 0.95;
+  line-height: 1.05;
+  min-height: 2.1em;
 }
 
 .application-info p {
@@ -1833,7 +1834,7 @@ footer {
   }
 
   .application-info h3 {
-    font-size: 1.9rem;
+    font-size: clamp(1.45rem, 5vw, 1.7rem);
   }
 
   .app-progress-track {
