@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# O site publicado está em dist; mantém o endereço principal no navegador.
+RewriteCond %{REQUEST_URI} !^/dist(?:/|$) [NC]
+RewriteCond %{REQUEST_URI} !^/\.well-known/ [NC]
+RewriteRule ^(.*)$ /dist/$1 [L]
