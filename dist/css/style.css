@@ -611,14 +611,14 @@ nav#main-nav.open {
 }
 
 .hero-copy {
-  width: min(610px, 54%);
+  width: min(100%, 50rem);
 }
 
 .hero h1 {
   font-size: clamp(3.3rem, 4.2vw, 4.8rem);
   font-weight: 600;
   line-height: .93;
-  max-width: 610px;
+  max-width: 9.65em;
   letter-spacing: -.025em;
 }
 
@@ -729,6 +729,7 @@ nav#main-nav.open {
   display: flex;
   flex-direction: column;
   text-align: left;
+  container-type: inline-size;
 }
 
 .about-eyebrow {
@@ -741,17 +742,18 @@ nav#main-nav.open {
 }
 
 .about-copy h2 {
-  max-width: 18ch;
-  font-size: clamp(2.5rem, 3.45vw, 3.7rem);
+  max-width: 100%;
+  font-size: clamp(2rem, 9cqi, 3.1rem);
   font-weight: 500;
   line-height: 0.98;
   letter-spacing: -.025em;
-  text-wrap: balance;
+  text-wrap: normal;
   margin: 0 0 1.6rem;
   color: #ffffff;
 }
 
 .about-copy h2 span {
+  display: block;
   color: var(--orange);
 }
 
