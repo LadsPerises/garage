@@ -18,7 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const heroBg = document.querySelector('.hero-bg');
   const heroSection = document.querySelector('.hero');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = motionPreference.matches;
+  const heroVideo = document.querySelector('.hero-bg-video');
+
+  if (heroVideo) {
+    const syncHeroVideo = () => {
+      if (motionPreference.matches) {
+        heroVideo.pause();
+        heroVideo.classList.remove('is-playing');
+      } else {
+        heroVideo.play().catch(() => heroVideo.classList.remove('is-playing'));
+      }
+    };
+    heroVideo.addEventListener('playing', () => heroVideo.classList.add('is-playing'));
+    heroVideo.addEventListener('error', () => heroVideo.classList.remove('is-playing'));
+    motionPreference.addEventListener('change', syncHeroVideo);
+    syncHeroVideo();
+  }
 
 
   // ---------------------------------------------------------------------------
