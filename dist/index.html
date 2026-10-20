@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-AO">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,52 +8,350 @@
   <title>Garage Forge 3D — Engenharia à medida</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121416'/%3E%3Cpath d='M16 46V18h23c7 0 11 4 11 10 0 4-2 7-6 9 5 1 7 5 7 9H39c0-4-2-6-6-6h-5v6H16Zm12-16h9c2 0 3-1 3-3s-1-3-3-3h-9v6Z' fill='%23f15a24'/%3E%3C/svg%3E">
-  <style>
-    :root { --ink:#121416; --panel:#1b1e21; --line:#3a3d40; --orange:#f15a24; --paper:#f5f3ee; --muted:#aeb2b4; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,system-ui,sans-serif; }
-    .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
-    .eyebrow { display:flex; gap:.55rem; align-items:center; text-transform:uppercase; letter-spacing:.13em; font-size:.73rem; font-weight:700; color:var(--orange); }
-    .eyebrow::before { content:""; width:26px; height:2px; background:currentColor; }
-    header { position:absolute; inset:0 0 auto; z-index:3; color:#fff; }
-    .nav { min-height:78px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.18); }
-    .brand { color:#fff; text-decoration:none; display:flex; align-items:center; gap:.62rem; font-family:'Barlow Condensed',sans-serif; font-size:1.45rem; font-weight:800; letter-spacing:.02em; }
-    .brand-mark { width:32px; height:32px; display:grid; place-items:center; border:2px solid var(--orange); color:var(--orange); font-size:1.15rem; line-height:1; }
-    nav { display:flex; gap:1.7rem; align-items:center; } nav a { color:#e7e7e7; text-decoration:none; font-size:.79rem; font-weight:600; }
-    .nav-cta,.button { background:var(--orange); color:#fff; text-decoration:none; font-size:.78rem; font-weight:800; letter-spacing:.04em; padding:.8rem 1rem; display:inline-flex; align-items:center; justify-content:center; text-transform:uppercase; }
-    .hero { min-height:690px; color:#fff; display:flex; align-items:end; position:relative; isolation:isolate; background:#17191b; overflow:hidden; }
-    .hero::before { content:""; position:absolute; inset:0; z-index:-2; background:linear-gradient(90deg, rgba(10,11,12,.98) 0%,rgba(10,11,12,.86) 37%,rgba(10,11,12,.28) 72%,rgba(10,11,12,.22)),url('hero-workshop.png') center/cover; }
-    .hero::after { content:""; position:absolute; inset:auto 0 0; height:38%; z-index:-1; background:linear-gradient(transparent,rgba(0,0,0,.55)); }
-    .hero-content { padding:9.7rem 0 5.6rem; max-width:640px; }
-    h1,h2,h3 { font-family:'Barlow Condensed',sans-serif; margin:0; text-transform:uppercase; line-height:.92; }
-    h1 { font-size:clamp(3.6rem,7vw,6.7rem); letter-spacing:-.025em; } h1 span { color:var(--orange); }
-    .lead { max-width:480px; line-height:1.6; font-size:1rem; color:#dedede; margin:1.35rem 0 1.85rem; }
-    .hero-actions { display:flex; flex-wrap:wrap; gap:.75rem; }.button.secondary { background:transparent; border:1px solid rgba(255,255,255,.55); }
-    .trust { background:var(--orange); color:white; }.trust-grid { min-height:111px; display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; align-items:center; }.trust strong { font-size:1rem; display:block; }.trust span { display:block; font-size:.79rem; margin-top:.18rem; opacity:.88; }
-    section { padding:6.25rem 0; }.intro { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(2rem,8vw,8rem); align-items:end; }.intro h2,.section-title { font-size:clamp(2.8rem,5vw,4.6rem); }.intro p { font-size:1.05rem; line-height:1.7; margin:0; }.intro strong { color:var(--orange); }
-    .process { background:var(--ink); color:white; }.heading-row { display:flex; align-items:end; justify-content:space-between; gap:2rem; margin-bottom:2.25rem; }.heading-row p { max-width:400px; line-height:1.55; color:#c8caca; margin:0; }
-    .steps { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }.step { padding:1.75rem 1.5rem 1.6rem 0; min-height:190px; border-right:1px solid var(--line); }.step:not(:first-child) { padding-left:1.5rem; }.step:last-child { border:0; }.number { color:var(--orange); font-size:.78rem; font-weight:800; }.step h3 { font-size:2.1rem; margin:.8rem 0 .45rem; }.step p { color:#b8bdbf; line-height:1.5; font-size:.84rem; max-width:260px; }
-    .work { background:#e9e7e1; }.work-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2rem; }.project { background:#222529; color:white; aspect-ratio:1/1.06; padding:1.1rem; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; }.project::before { content:""; position:absolute; inset:0; opacity:.38; background:radial-gradient(circle at 72% 20%,#f15a24 0 2px,transparent 3px),repeating-linear-gradient(135deg,transparent 0 15px,rgba(255,255,255,.1) 16px 17px); }.project:nth-child(2n)::before { background:linear-gradient(135deg,transparent 44%,rgba(241,90,36,.4) 45% 47%,transparent 48%),radial-gradient(circle at 35% 24%,#aaa 0 7%,transparent 7.5%); }.project>* { position:relative; }.project small { color:#d5d8d9; text-transform:uppercase; font-size:.68rem; font-weight:700; letter-spacing:.08em; }.project h3 { font-size:1.75rem; margin-top:.35rem; }.project p { color:#d5d8d9; margin:.4rem 0 0; font-size:.74rem; line-height:1.35; }
-    .why { display:grid; grid-template-columns:1fr 1.35fr; gap:4.5rem; align-items:start; }.why .copy p { line-height:1.65; color:#505457; }.reasons { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#cfcfca; }.reason { background:var(--paper); padding:1.55rem; min-height:170px; }.reason b { color:var(--orange); font-family:'Barlow Condensed',sans-serif; font-size:2.3rem; display:block; }.reason h3 { font-size:1.75rem; margin:.5rem 0; }.reason p { font-size:.8rem; line-height:1.45; margin:0; color:#585d60; }
-    .contact { background:var(--orange); color:#fff; }.contact-grid { display:grid; grid-template-columns:1.25fr .75fr; gap:4rem; align-items:center; }.contact h2 { font-size:clamp(3rem,6vw,5.4rem); }.contact p { line-height:1.6; max-width:500px; }.contact-card { background:#17191b; padding:1.7rem; }.contact-card h3 { font-size:2rem; }.contact-card a { color:#fff; text-decoration:none; display:block; border-bottom:1px solid #464a4c; padding:.9rem 0; font-size:.9rem; }.contact-card .button { width:100%; margin-top:1.2rem; background:#3ebd67; }
-    footer { background:#111315; color:#aaaeaf; padding:2rem 0; font-size:.75rem; }.footer-grid { display:flex; gap:1rem; justify-content:space-between; align-items:center; }.footer-grid .brand { font-size:1.1rem; }.footer-grid .brand-mark { width:25px; height:25px; }
-    @media(max-width:760px) { .wrap{width:min(100% - 30px,1160px)} nav a{display:none}.nav-cta{font-size:.68rem;padding:.65rem .72rem}.nav{min-height:67px}.hero{min-height:620px}.hero::before{background:linear-gradient(90deg,rgba(10,11,12,.97),rgba(10,11,12,.76) 65%,rgba(10,11,12,.45)),url('hero-workshop.png') 62% center/cover}.hero-content{padding:8.5rem 0 4rem}.trust-grid{grid-template-columns:1fr;gap:.4rem;padding:1.2rem 0}.trust strong{display:inline}.trust span{display:inline;margin-left:.35rem}.intro,.why,.contact-grid{grid-template-columns:1fr;gap:2rem}.heading-row{display:block}.heading-row p{margin-top:1rem}.steps{grid-template-columns:1fr}.step,.step:not(:first-child){padding:1.25rem 0;border-right:0;border-bottom:1px solid var(--line);min-height:auto}.work-grid{grid-template-columns:repeat(2,1fr);gap:.65rem}.project{padding:.85rem}.project h3{font-size:1.45rem}.reason{min-height:150px;padding:1.1rem}.footer-grid{align-items:flex-start;flex-direction:column}.hero-actions .button{width:100%} section{padding:4.5rem 0} }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121416'/%3E%3Cpath d='M16 46V18h23c7 0 11 4 11 10 0 4-2 7-6 9 5 1 7 5 7 9H39c0-4-2-6-6-6h-5v6H16Zm12-16h9c2 0 3-1 3-3s-1-3-3-3h-9v6Z' fill='%23f15a24'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header><div class="wrap nav"><a class="brand" href="#inicio"><span class="brand-mark">G</span>GARAGE FORGE <em style="color:#f15a24;font-style:normal">3D</em></a><nav><a href="#processo">Processo</a><a href="#trabalhos">Trabalhos</a><a href="#contacto">Contacto</a><a class="nav-cta" href="https://wa.me/244000000000">Pedir orçamento</a></nav></div></header>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio">
+        <img src="images/logo_garage.png" alt="Garage Forge 3D" class="brand-logo">
+      </a>
+      <!-- Navegação Horizontal Desktop (visível apenas no topo) -->
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a href="#sobre">Sobre nós</a>
+        <a href="#processo">Processo</a>
+        <a href="#trabalhos">Portefólio</a>
+        <a href="#contacto">Contacto</a>
+        <a class="button nav-cta" href="#contacto">Pedir orçamento</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" data-lenis-prevent>
+        <div class="nav-drawer-header">
+          <span class="nav-drawer-title">Menu</span>
+          <button class="nav-close-btn" type="button" aria-label="Fechar menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        <div class="nav-links">
+          <a href="#sobre"><span class="nav-num">01</span> Sobre nós</a>
+          <a href="#processo"><span class="nav-num">02</span> Processo</a>
+          <a href="#trabalhos"><span class="nav-num">03</span> Portefólio</a>
+          <a href="#contacto"><span class="nav-num">04</span> Contacto</a>
+        </div>
+        <div class="nav-drawer-footer">
+          <a class="button full nav-cta" href="#contacto">Pedir orçamento</a>
+          <div class="nav-direct-contact">
+            <span>WhatsApp Direto</span>
+            <a href="https://wa.me/244934922131" target="_blank" rel="noopener noreferrer">+244 934 922 131</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
   <main>
-    <section class="hero" id="inicio"><div class="wrap hero-content"><div class="eyebrow">Luanda, Angola</div><h1>Engenharia que<br><span>ganha forma.</span></h1><p class="lead">Peças automóveis, protótipos e soluções 3D feitos à medida — da ideia à instalação.</p><div class="hero-actions"><a class="button" href="https://wa.me/244000000000">Falar no WhatsApp</a><a class="button secondary" href="#trabalhos">Ver trabalhos</a></div></div></section>
-    <section class="trust"><div class="wrap trust-grid"><div><strong>01. Engenharia & reserva</strong><span>Medimos, estudamos e desenhamos.</span></div><div><strong>02. Fabrico local</strong><span>Impressão 3D com acompanhamento.</span></div><div><strong>03. Instalação & ajuste</strong><span>Peça pronta para o teu veículo.</span></div></div></section>
-    <section><div class="wrap intro"><div><div class="eyebrow">Garage Forge 3D</div><h2>Uma ideia útil merece <span style="color:var(--orange)">uma peça certa.</span></h2></div><p>Transformamos necessidades reais em componentes funcionais. Desde uma peça que já não se encontra até uma melhoria pensada para o teu carro, cada projeto é desenhado com <strong>precisão, resistência e propósito.</strong></p></div></section>
-    <section class="process" id="processo"><div class="wrap"><div class="heading-row"><div><div class="eyebrow">Como trabalhamos</div><h2 class="section-title">Do problema<br>à solução.</h2></div><p>Um processo direto, para que saibas sempre como a tua peça está a ser construída.</p></div><div class="steps"><article class="step"><span class="number">01 / CONCEITO</span><h3>Engenharia</h3><p>Recebemos a tua ideia, referência ou peça original e definimos a solução.</p></article><article class="step"><span class="number">02 / PRODUÇÃO</span><h3>Fabrico</h3><p>Modelamos e imprimimos localmente com material indicado para o uso real.</p></article><article class="step"><span class="number">03 / ENTREGA</span><h3>Ajuste</h3><p>Confirmamos o encaixe e deixamos tudo pronto para instalar ou usar.</p></article></div></div></section>
-    <section class="work" id="trabalhos"><div class="wrap"><div class="eyebrow">Portefólio</div><h2 class="section-title">Trabalhos em<br>destaque.</h2><div class="work-grid"><article class="project"><small>Peça interior</small><h3>Porta-copos duplo</h3><p>Consola central · medida personalizada</p></article><article class="project"><small>Transmissão</small><h3>Engrenagem mecânica</h3><p>Reposição funcional · alta precisão</p></article><article class="project"><small>Exterior</small><h3>Capa de farol</h3><p>Proteção e acabamento para Jeep</p></article><article class="project"><small>Consola</small><h3>Painel de botões</h3><p>Organização e acessibilidade</p></article><article class="project"><small>Navegação</small><h3>Suporte GPS</h3><p>Encaixe firme · posição ideal</p></article><article class="project"><small>Iluminação</small><h3>Suporte lanterna</h3><p>Pronto para todo-o-terreno</p></article><article class="project"><small>Interior</small><h3>Organizador</h3><p>Mais ordem dentro da consola</p></article><article class="project"><small>Proteção</small><h3>Peça sob medida</h3><p>Resistência onde precisas</p></article></div></div></section>
-    <section><div class="wrap why"><div class="copy"><div class="eyebrow">O que fica</div><h2 class="section-title">Feito para<br>funcionar.</h2><p>Não é uma lista de serviços genéricos. É um trabalho com atenção ao encaixe, ao material e ao uso que a peça vai ter no dia a dia.</p></div><div class="reasons"><article class="reason"><b>01</b><h3>Precisão</h3><p>Modelação baseada em medidas reais e necessidades concretas.</p></article><article class="reason"><b>02</b><h3>Durabilidade</h3><p>Escolha de materiais de acordo com o esforço e o ambiente.</p></article><article class="reason"><b>03</b><h3>Proximidade</h3><p>Fabrico local, comunicação simples e acompanhamento direto.</p></article><article class="reason"><b>04</b><h3>Ajuste real</h3><p>O objetivo final é uma peça que encaixa e resolve.</p></article></div></div></section>
-    <section class="contact" id="contacto"><div class="wrap contact-grid"><div><div class="eyebrow" style="color:#25130d">O teu projeto começa aqui</div><h2>Vamos fazer<br>isso acontecer.</h2><p>Envia uma foto, medida ou explica-nos o que precisas. Respondemos com uma orientação clara para o teu projeto.</p></div><div class="contact-card"><h3>Contacto direto</h3><a href="https://wa.me/244000000000">WhatsApp · +244 000 000 000</a><a href="mailto:orcamentos@garageforge3d.ao">orcamentos@garageforge3d.ao</a><a class="button" href="https://wa.me/244000000000">Enviar mensagem</a></div></div></section>
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true">
+        <img class="hero-bg-img" src="images/hero-workshop.png" alt="" fetchpriority="high">
+      </div>
+      <div class="wrap hero-content">
+        <div class="hero-copy">
+          <h1>Peças à medida.<br><span>Feitas para o teu carro.</span></h1>
+          <p class="lead">Desenhamos e fabricamos peças automóveis em 3D para repor, adaptar ou melhorar o teu carro.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contacto">Pedir orçamento</a>
+            <a class="button secondary" href="#trabalhos">Explorar peças</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-index" aria-hidden="true">DESENHO <span>/</span> FABRICO <span>/</span> AJUSTE</div>
+    </section>
+    <section class="about" id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-visual">
+          <img src="images/novas%20imagens/imagem_sobre.png" alt="Medição de uma peça automóvel durante o processo de modelação 3D">
+          <div class="about-location-tag">Luanda · Angola</div>
+        </div>
+        <div class="about-copy">
+          <span class="about-eyebrow">Oficina & Fabrico Aditivo</span>
+          <h2>Sobre a <span>Garage Forge 3D.</span></h2>
+          <p>Criamos peças automóveis por medida, em Luanda. Partimos de uma peça partida, de um encaixe em falta ou de uma adaptação personalizada e transformamos a necessidade numa solução funcional e duradoura.</p>
+          <p>Medimos com precisão técnica, modelamos em CAD 3D, produzimos com polímeros resistentes e afinamos no próprio veículo.</p>
+          
+          <div class="about-action">
+            <a class="button secondary about-btn" href="#processo">
+              <span>Explorar o processo</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14m-7-7 7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="processo">
+      <div class="wrap process-layout">
+        <div class="process-intro">
+          <h2>Como trabalhamos.</h2>
+          <p>Começamos pela peça e pelo problema que ela precisa de resolver. Cada passo aproxima o desenho do encaixe final.</p>
+          <img src="images/hero-workshop.png" alt="Imagem ilustrativa do trabalho de medição e modelação 3D" loading="lazy">
+        </div>
+        <div class="process-list">
+          <article>
+            <span class="process-no">01</span>
+            <div>
+              <h3>Mostra-nos a peça</h3>
+              <p>Basta uma foto no WhatsApp ou passar pela nossa oficina. Diz-nos onde ela vai e o que aconteceu.</p>
+            </div>
+          </article>
+          <article>
+            <span class="process-no">02</span>
+            <div>
+              <h3>Criamos o modelo</h3>
+              <p>Desenhamos a peça em 3D ao milímetro para garantir que encaixa e funciona exatamente como deve ser.</p>
+            </div>
+          </article>
+          <article>
+            <span class="process-no">03</span>
+            <div>
+              <h3>Fabricamos</h3>
+              <p>Imprimimos cá em Luanda com materiais resistentes ao calor, vibrações e ao uso diário na estrada.</p>
+            </div>
+          </article>
+          <article>
+            <span class="process-no">04</span>
+            <div>
+              <h3>Testamos o encaixe</h3>
+              <p>Validamos no carro e fazemos os ajustes finais até ficar perfeita e pronta a rodar.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work" id="trabalhos">
+      <div class="wrap">
+        <div class="portfolio-heading">
+          <h2 class="section-title">Peças que resolvem.</h2>
+          <p>Cada projeto nasce de uma necessidade real: substituir, organizar, fixar ou adaptar.</p>
+        </div>
+        <div class="work-grid">
+          <figure class="project">
+            <img src="images/portfolio-console-new.png" alt="Organizador de objetos instalado no porta-luvas de um automóvel" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">INTERIOR</span>
+              </div>
+              <h3>Organizador de porta-luvas</h3>
+              <p>Mais espaço e acesso rápido aos itens essenciais do veículo.</p>
+            </figcaption>
+          </figure>
+          <figure class="project">
+            <img src="images/portfolio-gps-mount-new.png" alt="Suporte para lanterna instalado no interior de um veículo" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">ILUMINAÇÃO</span>
+              </div>
+              <h3>Suporte para lanternas</h3>
+              <p>Lanterna fixa e acessível para iluminar o interior do veículo.</p>
+            </figcaption>
+          </figure>
+          <figure class="project">
+            <img src="images/portfolio-shower-rack.png" alt="Suporte metálico para chuveiro montado no rack de um veículo todo-o-terreno" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">OVERLAND</span>
+              </div>
+              <h3>Suporte para chuveiro no rack</h3>
+              <p>Uma fixação prática para levar o chuveiro nas viagens off-road.</p>
+            </figcaption>
+          </figure>
+          <figure class="project">
+            <img src="images/portfolio-panel-new.png" alt="Porta-copos duplo integrado na consola de um automóvel" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">INTERIOR</span>
+              </div>
+              <h3>Porta-copos duplo personalizado</h3>
+              <p>Dois copos bem acomodados e ao alcance durante o percurso.</p>
+            </figcaption>
+          </figure>
+          <figure class="project">
+            <img src="images/portfolio-bracket-new.png" alt="Acessório personalizado instalado num veículo todo-o-terreno" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">ILUMINAÇÃO</span>
+              </div>
+              <h3>Capa para faróis de longo alcance</h3>
+              <p>Proteção e acabamento à medida para os faróis auxiliares.</p>
+            </figcaption>
+          </figure>
+          <figure class="project">
+            <img src="images/portfolio-keychain-new.png" alt="Porta-chaves personalizado para veículo todo-o-terreno" loading="lazy">
+            <figcaption>
+              <div class="project-tag-row">
+                <span class="project-cat">PERSONALIZAÇÃO</span>
+              </div>
+              <h3>Porta-chaves Jeep Overland</h3>
+              <p>Um detalhe personalizado para levar a identidade do veículo contigo.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="applications" id="aplicacoes">
+      <div class="wrap">
+        <div class="application-heading">
+          <h2 class="section-title">Onde aplicar.</h2>
+          <div class="app-controls">
+            <button class="app-prev" type="button" aria-label="Ver aplicação anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="app-next" type="button" aria-label="Ver aplicação seguinte">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="application-grid" tabindex="0" aria-label="Aplicações das peças, desliza para ver mais">
+          <article class="application" tabindex="0">
+            <div class="application-media">
+              <img src="images/project-console.png" alt="Exemplo ilustrativo de peças para o interior do carro" loading="lazy">
+            </div>
+            <div class="application-info">
+              <b>01 / INTERIOR</b>
+              <h3>Dentro do carro</h3>
+              <p>Consolas centrais, organizadores de cabine e suportes ergonómicos desenhados para tirar o máximo partido do espaço interior.</p>
+              <div class="app-tags">
+                <span class="app-tag">Consolas</span>
+                <span class="app-tag">Suportes de Copos</span>
+                <span class="app-tag">Painéis Auxiliares</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="application" tabindex="0">
+            <div class="application-media">
+              <img src="images/project-offroad.png" alt="Exemplo ilustrativo de suporte para uso fora de estrada" loading="lazy">
+            </div>
+            <div class="application-info">
+              <b>02 / OFF-ROAD</b>
+              <h3>Fora de estrada</h3>
+              <p>Fixações rígidas e acessórios reforçados para navegação GPS, ecrãs e comandos em terrenos acidentados de alta vibração.</p>
+              <div class="app-tags">
+                <span class="app-tag">Fixações GPS</span>
+                <span class="app-tag">Clips Antivibração</span>
+                <span class="app-tag">4x4 & Expedição</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="application" tabindex="0">
+            <div class="application-media">
+              <img src="images/service-engineering.png" alt="Exemplo ilustrativo de modelação de uma peça de reposição" loading="lazy">
+            </div>
+            <div class="application-info">
+              <b>03 / REPOSIÇÃO</b>
+              <h3>Quando falta uma peça</h3>
+              <p>Engenharia reversa a partir de referências originais ou fragmentos danificados para recriar componentes descontinuados.</p>
+              <div class="app-tags">
+                <span class="app-tag">Peças Raras</span>
+                <span class="app-tag">Encaixes Sob Medida</span>
+                <span class="app-tag">Impressão Técnica</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="app-progress-track" aria-hidden="true">
+          <span class="app-progress-bar"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacto">
+      <div class="wrap contact-grid">
+        <div class="contact-intro">
+          <h2>Tens uma peça <span>em mente?</span></h2>
+          <p>Diz-nos o que o teu carro precisa ou aquela ideia que queres ver feita. Nós tratamos do resto.</p>
+          
+          <div class="contact-direct">
+            <span class="direct-label">Ou fala connosco diretamente</span>
+            <a href="https://wa.me/244934922131" target="_blank" rel="noopener noreferrer" class="direct-link">
+              +244 934 922 131
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="quote-form">
+          <div class="form-header">
+            <h3>Vamos falar do teu projeto</h3>
+          </div>
+
+          <div class="form-group-row">
+            <label class="form-field">
+              <span class="field-label">Nome</span>
+              <input required name="nome" autocomplete="name" placeholder="O teu nome">
+            </label>
+            <label class="form-field">
+              <span class="field-label">Telefone / WhatsApp</span>
+              <input required name="telefone" autocomplete="tel" inputmode="tel" placeholder="+244 9…">
+            </label>
+          </div>
+
+          <label class="form-field full">
+            <span class="field-label">Tipo de peça</span>
+            <div class="select-wrapper">
+              <select name="tipo">
+                <option>Peça de reposição (quebrada ou em falta)</option>
+                <option>Peça para o interior (consola, organizador, moldura)</option>
+                <option>Acessório exterior / off-road (suporte GPS, reforço)</option>
+                <option>Adaptação personalizada sob medida</option>
+                <option>Ainda não sei / Quero tirar uma dúvida</option>
+              </select>
+            </div>
+          </label>
+
+          <label class="form-field full">
+            <span class="field-label">O que tens em mente?</span>
+            <textarea required name="mensagem" placeholder="Qual é o carro e o que gostarias de fazer?"></textarea>
+          </label>
+
+          <button class="button full contact-submit-btn" type="submit">
+            <span>Enviar pelo WhatsApp</span>
+          </button>
+
+          <p class="form-note">Abre diretamente no WhatsApp para conversarmos e acertarmos detalhes.</p>
+        </form>
+      </div>
+    </section>
   </main>
-  <footer><div class="wrap footer-grid"><a class="brand" href="#inicio"><span class="brand-mark">G</span>GARAGE FORGE <em style="color:#f15a24;font-style:normal">3D</em></a><span>Luanda, Angola · Engenharia e impressão 3D por medida</span><span>© 2026 Garage Forge 3D</span></div></footer>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <a class="brand" href="#inicio">
+        <img src="images/logo_garage.png" alt="Garage Forge 3D" class="brand-logo footer-logo">
+      </a>
+      <span>Luanda, Angola · Engenharia e impressão 3D por medida</span>
+      <span>© 2026 Garage Forge 3D</span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
+
 </html>

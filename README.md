@@ -1,0 +1,42 @@
+# Garage Forge 3D — Website
+
+Website oficial da **Garage Forge 3D** (Luanda, Angola) — Soluções sob medida em desenho, engenharia e impressão 3D para peças automóveis.
+
+## 📁 Estrutura do Projeto
+
+O projeto foi organizado separando claramente o HTML, CSS, JavaScript e recursos visuais:
+
+```text
+garage-forge-site/
+├── .openai/
+│   └── hosting.json        # Configuração de alojamento estático
+├── dist/                   # Diretório de publicação / webroot
+│   ├── index.html          # Estrutura HTML limpa e semântica
+│   ├── css/
+│   │   └── style.css       # Folha de estilos unificada e comentada
+│   ├── js/
+│   │   └── main.js         # Lógica JavaScript modular (carrossel, menu, WhatsApp, animações)
+│   └── images/             # Imagens e ficheiros de media
+│       ├── hero-workshop.png
+│       ├── portfolio-bracket.png
+│       ├── portfolio-tray.png
+│       ├── portfolio-vent.png
+│       ├── project-console.png
+│       ├── project-offroad.png
+│       └── service-engineering.png
+└── README.md
+```
+
+## 🚀 Como Executar Localmente
+
+Podes visualizar o site abrindo diretamente o ficheiro `dist/index.html` em qualquer navegador ou usando um servidor estático local:
+
+```bash
+# Com Python 3
+python -m http.server 8000 --directory dist
+
+# Com Node (npx)
+npx serve dist
+```
+
+Em seguida, abre `http://localhost:8000` no navegador.
