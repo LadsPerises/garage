@@ -1647,9 +1647,23 @@ footer {
 }
 
 .footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
   color: #d3d5d5;
   text-decoration: none;
   transition: color .2s ease;
+}
+
+.footer-social-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+.footer-social-icon-facebook {
+  width: 16px;
+  height: 16px;
 }
 
 .footer-socials a:hover,
