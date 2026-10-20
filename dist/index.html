@@ -13,7 +13,7 @@
     rel="stylesheet">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121416'/%3E%3Cpath d='M16 46V18h23c7 0 11 4 11 10 0 4-2 7-6 9 5 1 7 5 7 9H39c0-4-2-6-6-6h-5v6H16Zm12-16h9c2 0 3-1 3-3s-1-3-3-3h-9v6Z' fill='%23f15a24'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=20261020-horizontal-logo">
+  <link rel="stylesheet" href="css/style.css?v=20261020-process-clicks-logo">
 </head>
 
 <body>
@@ -109,7 +109,7 @@
         <div class="process-intro">
           <h2>Como trabalhamos.</h2>
           <p>Começamos pela peça e pelo problema que ela precisa de resolver. Cada passo aproxima o desenho do encaixe final.</p>
-          <figure class="process-visual" aria-label="Apresentação automática das quatro etapas de trabalho">
+          <figure class="process-visual" aria-label="Apresentação das quatro etapas de trabalho">
             <img id="process-stage-image" src="images/etapas/Gemini_Generated_Image_ltt7h5ltt7h5ltt7.jpeg" alt="Uma pessoa fotografa uma peça automóvel partida com o telemóvel para mostrar o problema." loading="lazy" decoding="async">
             <div class="process-visual-shade" aria-hidden="true"></div>
             <figcaption class="process-visual-caption" aria-hidden="true">
@@ -126,29 +126,29 @@
             </button>
           </figure>
         </div>
-        <div class="process-list">
-          <article class="is-active" aria-current="step">
+        <div class="process-list" role="group" aria-label="Escolher uma etapa do processo">
+          <article class="is-active" role="button" tabindex="0" aria-label="Mostrar etapa 1: Mostra-nos a peça" aria-current="step">
             <span class="process-no">01</span>
             <div>
               <h3>Mostra-nos a peça</h3>
               <p>Basta uma foto no WhatsApp ou passar pela nossa oficina. Diz-nos onde ela vai e o que aconteceu.</p>
             </div>
           </article>
-          <article aria-current="false">
+          <article role="button" tabindex="0" aria-label="Mostrar etapa 2: Criamos o modelo" aria-current="false">
             <span class="process-no">02</span>
             <div>
               <h3>Criamos o modelo</h3>
               <p>Desenhamos a peça em 3D ao milímetro para garantir que encaixa e funciona exatamente como deve ser.</p>
             </div>
           </article>
-          <article aria-current="false">
+          <article role="button" tabindex="0" aria-label="Mostrar etapa 3: Fabricamos" aria-current="false">
             <span class="process-no">03</span>
             <div>
               <h3>Fabricamos</h3>
               <p>Imprimimos cá em Luanda com materiais resistentes ao calor, vibrações e ao uso diário na estrada.</p>
             </div>
           </article>
-          <article aria-current="false">
+          <article role="button" tabindex="0" aria-label="Mostrar etapa 4: Testamos o encaixe" aria-current="false">
             <span class="process-no">04</span>
             <div>
               <h3>Testamos o encaixe</h3>
@@ -385,7 +385,7 @@
   </footer>
 
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=20261020-process-stages" defer></script>
+  <script src="js/main.js?v=20261020-process-clicks" defer></script>
 </body>
 
 </html>

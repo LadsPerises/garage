@@ -342,6 +342,20 @@ document.addEventListener('DOMContentLoaded', () => {
       preload.src = stage.src;
     };
 
+    processSteps.forEach((step, index) => {
+      const selectStep = () => {
+        showProcessStep(index);
+        syncProcessTimer();
+      };
+
+      step.addEventListener('click', selectStep);
+      step.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        selectStep();
+      });
+    });
+
     if (processToggle) {
       processToggle.addEventListener('click', () => {
         processPaused = !processPaused;

@@ -201,9 +201,9 @@ header.scrolled .nav {
 }
 
 .brand-logo {
-  height: 72px;
+  height: 62px;
   width: auto;
-  max-width: 250px;
+  max-width: 220px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.16)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
@@ -222,8 +222,8 @@ header.scrolled .brand {
 }
 
 header.scrolled .brand-logo {
-  height: 60px;
-  max-width: 220px;
+  height: 52px;
+  max-width: 185px;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.14)) drop-shadow(0 4px 14px rgba(0, 0, 0, 0.72));
 }
 
@@ -1095,6 +1095,12 @@ nav#main-nav.open {
   transform: translateX(3px);
 }
 
+.process-list article:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+  z-index: 1;
+}
+
 /* --------------------------------------------------------------------------
    7. Secção Trabalhos / Portefólio
    -------------------------------------------------------------------------- */
@@ -1743,9 +1749,9 @@ footer {
 }
 
 .footer-logo {
-  height: 54px;
+  height: 48px;
   width: auto;
-  max-width: 190px;
+  max-width: 168px;
   object-fit: contain;
 }
 
@@ -1824,13 +1830,13 @@ footer {
   }
 
   .brand-logo {
-    height: 52px;
-    max-width: 200px;
+    height: 46px;
+    max-width: 168px;
   }
 
   header.scrolled .brand-logo {
-    height: 46px;
-    max-width: 190px;
+    height: 40px;
+    max-width: 148px;
   }
 
   .hero {
