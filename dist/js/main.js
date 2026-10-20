@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `O que preciso: ${formData.get('mensagem')}`
       ].join('\n');
 
-      const whatsappUrl = `https://wa.me/244934922131?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/244950474743?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     });
   }

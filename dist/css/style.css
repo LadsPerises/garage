@@ -1640,6 +1640,27 @@ footer {
   object-fit: contain;
 }
 
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .9rem;
+}
+
+.footer-socials a {
+  color: #d3d5d5;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:focus-visible {
+  color: var(--orange);
+}
+
+.footer-socials a span {
+  color: var(--orange);
+}
+
 /* --------------------------------------------------------------------------
    11. Responsividade e Consultas de Media (Media Queries)
    -------------------------------------------------------------------------- */
