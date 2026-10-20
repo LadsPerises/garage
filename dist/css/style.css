@@ -201,7 +201,7 @@ header.scrolled .nav {
 }
 
 .brand-logo {
-  height: 56px;
+  height: 72px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
@@ -222,7 +222,7 @@ header.scrolled .brand {
 }
 
 header.scrolled .brand-logo {
-  height: 50px;
+  height: 60px;
   max-width: 220px;
   filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.85));
 }
@@ -1743,7 +1743,7 @@ footer {
 }
 
 .footer-logo {
-  height: 44px;
+  height: 54px;
   width: auto;
   max-width: 190px;
   object-fit: contain;
@@ -1824,12 +1824,12 @@ footer {
   }
 
   .brand-logo {
-    height: 48px;
+    height: 52px;
     max-width: 200px;
   }
 
   header.scrolled .brand-logo {
-    height: 44px;
+    height: 46px;
     max-width: 190px;
   }
 
