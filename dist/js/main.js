@@ -236,7 +236,137 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------------------------------------------------------------------
-  // 5. Envio de Orçamento para o WhatsApp
+  // 5. Apresentação automática das etapas de trabalho
+  // ---------------------------------------------------------------------------
+  const processSection = document.querySelector('#processo');
+  const processImage = document.querySelector('#process-stage-image');
+  const processIndex = document.querySelector('.process-visual-index');
+  const processLabel = document.querySelector('.process-visual-label');
+  const processToggle = document.querySelector('#process-autoplay-toggle');
+  const processSteps = processSection ? [...processSection.querySelectorAll('.process-list article')] : [];
+
+  if (processSection && processImage && processSteps.length) {
+    const processStages = [
+      {
+        src: 'images/etapas/Gemini_Generated_Image_ltt7h5ltt7h5ltt7.jpeg',
+        alt: 'Uma pessoa fotografa uma peça automóvel partida com o telemóvel para mostrar o problema.',
+        title: 'Mostra-nos a peça'
+      },
+      {
+        src: 'images/etapas/Gemini_Generated_Image_roz3cproz3cproz3.jpeg',
+        alt: 'Técnico desenha em CAD o modelo 3D de um suporte personalizado no computador.',
+        title: 'Criamos o modelo'
+      },
+      {
+        src: 'images/etapas/Gemini_Generated_Image_26y8lz26y8lz26y8.jpeg',
+        alt: 'Peça acabada de imprimir em 3D a ser retirada e inspecionada na impressora.',
+        title: 'Fabricamos'
+      },
+      {
+        src: 'images/etapas/Gemini_Generated_Image_epikebepikebepik.jpeg',
+        alt: 'Técnico testa o encaixe de um suporte personalizado no tablier de um veículo.',
+        title: 'Testamos o encaixe'
+      }
+    ];
+
+    const processInterval = 6800;
+    let activeProcessStep = 0;
+    let processTimer = null;
+    let processVisible = false;
+    let processPaused = prefersReducedMotion;
+    let processSwapId = 0;
+
+    const updateProcessControl = () => {
+      if (!processToggle) return;
+      const label = processPaused
+        ? 'Reproduzir a apresentação automática'
+        : 'Pausar a apresentação automática';
+      processToggle.classList.toggle('is-paused', processPaused);
+      processToggle.setAttribute('aria-label', label);
+      processToggle.setAttribute('aria-pressed', String(!processPaused));
+      processToggle.title = label;
+    };
+
+    const stopProcessTimer = () => {
+      window.clearInterval(processTimer);
+      processTimer = null;
+    };
+
+    const syncProcessTimer = () => {
+      stopProcessTimer();
+      if (!processPaused && processVisible && !document.hidden) {
+        processTimer = window.setInterval(() => {
+          showProcessStep((activeProcessStep + 1) % processStages.length);
+        }, processInterval);
+      }
+    };
+
+    const showProcessStep = (index) => {
+      const targetIndex = (index + processStages.length) % processStages.length;
+      const stage = processStages[targetIndex];
+      const swapId = ++processSwapId;
+      activeProcessStep = targetIndex;
+
+      const applyStage = () => {
+        if (swapId !== processSwapId) return;
+        processImage.classList.add('is-changing');
+        window.setTimeout(() => {
+          if (swapId !== processSwapId) return;
+          processImage.src = stage.src;
+          processImage.alt = stage.alt;
+          if (processIndex) processIndex.textContent = String(targetIndex + 1).padStart(2, '0');
+          if (processLabel) processLabel.textContent = stage.title;
+
+          processSteps.forEach((step, stepIndex) => {
+            const isActive = stepIndex === targetIndex;
+            step.classList.toggle('is-active', isActive);
+            step.setAttribute('aria-current', isActive ? 'step' : 'false');
+          });
+
+          requestAnimationFrame(() => processImage.classList.remove('is-changing'));
+        }, motionPreference.matches ? 0 : 180);
+      };
+
+      if (processImage.getAttribute('src') === stage.src) {
+        processSteps.forEach((step, stepIndex) => {
+          const isActive = stepIndex === targetIndex;
+          step.classList.toggle('is-active', isActive);
+          step.setAttribute('aria-current', isActive ? 'step' : 'false');
+        });
+        return;
+      }
+
+      const preload = new Image();
+      preload.addEventListener('load', applyStage, { once: true });
+      preload.addEventListener('error', applyStage, { once: true });
+      preload.src = stage.src;
+    };
+
+    if (processToggle) {
+      processToggle.addEventListener('click', () => {
+        processPaused = !processPaused;
+        updateProcessControl();
+        syncProcessTimer();
+      });
+    }
+
+    document.addEventListener('visibilitychange', syncProcessTimer);
+    updateProcessControl();
+
+    if ('IntersectionObserver' in window) {
+      const processObserver = new IntersectionObserver((entries) => {
+        processVisible = entries.some((entry) => entry.isIntersecting);
+        syncProcessTimer();
+      }, { threshold: 0.12 });
+      processObserver.observe(processSection);
+    } else {
+      processVisible = true;
+      syncProcessTimer();
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // 6. Envio de Orçamento para o WhatsApp
   // ---------------------------------------------------------------------------
   if (quoteForm) {
     quoteForm.addEventListener('submit', (event) => {
@@ -257,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------------------------------------------------------------------
-  // 6. Animações de Revelação Suave (IntersectionObserver)
+  // 7. Animações de Revelação Suave (IntersectionObserver)
   // ---------------------------------------------------------------------------
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const revealTargets = document.querySelectorAll(
