@@ -17,13 +17,13 @@ garage-forge-site/
 │   ├── js/
 │   │   └── main.js         # Lógica JavaScript modular (carrossel, menu, WhatsApp, animações)
 │   └── images/             # Imagens e ficheiros de media
-│       ├── hero-workshop.png
-│       ├── portfolio-bracket.png
-│       ├── portfolio-tray.png
-│       ├── portfolio-vent.png
-│       ├── project-console.png
-│       ├── project-offroad.png
-│       └── service-engineering.png
+│       ├── hero-workshop.webp
+│       ├── portfolio-bracket.webp
+│       ├── portfolio-tray.webp
+│       ├── portfolio-vent.webp
+│       ├── project-console.webp
+│       ├── project-offroad.webp
+│       └── service-engineering.webp
 └── README.md
 ```
 

@@ -1512,7 +1512,7 @@ nav#main-nav.open {
   position: absolute;
   inset: 0 45% 0 0;
   z-index: -2;
-  background: url('../images/novas%20imagens/fundo.png') 52% center/cover no-repeat;
+  background: url('../images/novas%20imagens/fundo.webp') 52% center/cover no-repeat;
   opacity: 0.35;
   filter: saturate(0.8);
 }
