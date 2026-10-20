@@ -1268,7 +1268,7 @@ nav#main-nav.open {
   object-fit: cover;
   object-position: center;
   transform: scale(1);
-  opacity: 0.82;
+  opacity: 0.96;
   filter: saturate(0.95);
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.5s ease,
@@ -1287,9 +1287,9 @@ nav#main-nav.open {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(12, 14, 16, 0.2) 0%,
-    rgba(12, 14, 16, 0.4) 38%,
-    rgba(12, 14, 16, 0.92) 78%,
+    rgba(12, 14, 16, 0) 42%,
+    rgba(12, 14, 16, 0.12) 56%,
+    rgba(12, 14, 16, 0.88) 80%,
     #0c0e10 100%
   );
 }
@@ -1319,11 +1319,10 @@ nav#main-nav.open {
 
 .application-info h3 {
   font-size: clamp(1.55rem, 2.2vw, 2.05rem);
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.3rem;
   color: #ffffff;
   letter-spacing: -0.02em;
   line-height: 1.05;
-  min-height: 2.1em;
 }
 
 .application-info p {
