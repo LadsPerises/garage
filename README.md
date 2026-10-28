@@ -1,6 +1,6 @@
 # Garage Forge 3D — Website
 
-Website oficial da **Garage Forge 3D** (Luanda, Angola) — Soluções sob medida em desenho, engenharia e impressão 3D para peças automóveis.
+Website oficial da **Garage Forge 3D** — soluções sob medida em desenho, engenharia e impressão 3D para peças automóveis, com produção local.
 
 ## 📁 Estrutura do Projeto
 

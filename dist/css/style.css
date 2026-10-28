@@ -195,7 +195,7 @@ header.scrolled .nav {
   display: inline-flex;
   align-items: center;
   pointer-events: auto;
-  transition: transform 0.28s ease;
+  transition: none;
   line-height: 0;
   padding: 0;
 }
@@ -207,11 +207,7 @@ header.scrolled .nav {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.16)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
-  transition: height 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
-}
-
-.brand:hover .brand-logo {
-  transform: scale(1.04);
+  transition: height 0.28s ease, filter 0.28s ease;
 }
 
 header.scrolled .brand {
@@ -1734,31 +1730,83 @@ nav#main-nav.open {
    10. Rodapé
    -------------------------------------------------------------------------- */
 footer {
-  background: var(--charcoal-surface);
+  background: #090a0b;
   border-top: 1px solid var(--charcoal-border);
   color: #aaaeaf;
-  padding: 2.2rem 0;
+  padding: 1.5rem 0;
   font-size: .75rem;
 }
 
 .footer-grid {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  grid-template-areas:
+    "brand details socials";
+  column-gap: clamp(1.5rem, 4vw, 4rem);
   align-items: center;
 }
 
+.footer-brand {
+  grid-area: brand;
+  justify-self: start;
+}
+
 .footer-logo {
-  height: 48px;
-  width: auto;
-  max-width: 168px;
+  display: block;
+  height: 150px;
+  width: 150px;
+  max-width: 100%;
   object-fit: contain;
+  filter: none;
+}
+
+.footer-details {
+  grid-area: details;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .45rem;
+}
+
+.footer-details strong {
+  color: #f2f2f2;
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: .015em;
+}
+
+.footer-details span {
+  color: #92999e;
+  font-size: .76rem;
+  line-height: 1.5;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem 1.35rem;
+  margin-top: .55rem;
+}
+
+.footer-nav a {
+  color: #c7cbce;
+  font-size: .74rem;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--orange-accent);
 }
 
 .footer-socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .9rem;
+  grid-area: socials;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: center;
+  justify-content: end;
+  gap: .8rem .9rem;
 }
 
 .footer-socials a {
@@ -1788,6 +1836,15 @@ footer {
 
 .footer-socials a span {
   color: var(--orange);
+}
+
+.footer-copyright {
+  grid-column: 1 / -1;
+  justify-self: end;
+  color: #7f878c;
+  font-size: .68rem;
+  white-space: nowrap;
+  margin-top: .2rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -1967,7 +2024,11 @@ footer {
   }
 
   .project figcaption p {
-    display: none;
+    display: block;
+    max-width: 100%;
+    font-size: 0.8rem;
+    opacity: 1;
+    color: #c9cfd2;
   }
 
   .application-heading {
@@ -2012,12 +2073,43 @@ footer {
   }
 
   .footer-grid {
+    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-areas:
+      "brand details"
+      "brand socials";
+    column-gap: 1.2rem;
+    row-gap: .85rem;
+    align-items: center;
+  }
+
+  .footer-logo {
+    height: 120px;
+    width: 120px;
+  }
+
+  .footer-socials {
+    justify-content: flex-start;
     align-items: flex-start;
-    flex-direction: column;
+    gap: .7rem;
+  }
+
+  .footer-copyright {
+    justify-self: start;
+    padding-top: .2rem;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 520px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project,
+  .project:first-child {
+    aspect-ratio: 1.35;
+  }
+
   .hero h1 {
     font-size: 2.6rem;
   }
@@ -2031,10 +2123,35 @@ footer {
     min-height: 400px;
   }
 
-  .project,
-  .project:first-child {
-    aspect-ratio: 1;
+  .footer-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "details"
+      "socials";
+    justify-items: center;
+    text-align: center;
   }
+
+  .footer-logo {
+    height: 136px;
+    width: 136px;
+  }
+
+  .footer-nav,
+  .footer-socials {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-details {
+    align-items: center;
+  }
+
+  .footer-copyright {
+    text-align: center;
+  }
+
 }
 
 /* --------------------------------------------------------------------------
